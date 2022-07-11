@@ -13,7 +13,16 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 製作者はいつでも受け付けてます！discordかTwitterかissueまで！
 
 # 実装予定の機能
-・廃村<br>
 ・PC以外をキック<br>
-・会議強制終了<br>
+*追加機能募集中です!*
 
+## クレジット
+[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)Thanks to *ykundesu*!!
+[SuperNewRoles](https://github.com/reitou-mugicha/TownOfSuper)Thanks to *reitou-mugicha*!!
+
+## 機能一覧
+#### ホストのみ
+| キー                | 機能                         | 使えるとき     |
+| ------------------- | ---------------------------- | ---------------- |
+| `左Shift`+`A`+`右Shift` | 廃村                         | 試合中いつでも         |
+| `左Shift`+`S`+`右Shift` | 投票をスキップ | 会議中         |
