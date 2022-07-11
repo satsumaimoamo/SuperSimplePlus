@@ -10,7 +10,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 # 製作者
 [さつまいも](https://github.com/satsumaimoamo) ([Twitter](https://twitter.com/satsumaimo_SNR))<br>
-製作者はいつでも受け付けてます！discordかTwitterかissueまで！
+製作者はいつでも募集しています！discordかTwitterかissueまで！
 
 # 実装予定の機能
 ・PC以外をキック<br>

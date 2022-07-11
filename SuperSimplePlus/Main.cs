@@ -5,7 +5,7 @@ using BepInEx.IL2CPP;
 using BepInEx.Configuration;
 using HarmonyLib;
 
-namespace TownOfSuper
+namespace SuperSimplePlus
 {
     [BepInPlugin(Id, "SuperSimplePlus", Version)]
     public class SSPPlugin : BasePlugin
@@ -21,7 +21,7 @@ namespace TownOfSuper
         {
 
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
-            StereotypedText = Config.Bind("Client Options", "StereotypedText", "TownOfSuper定型文");
+            StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
 
             Harmony.PatchAll();
         }
@@ -41,7 +41,7 @@ namespace TownOfSuper
     {
         public static void Postfix(VersionShower __instance)
         {
-            __instance.text.text += " & <color=#ffa500>Super</color><color=#ff0000>Simple</color><color=#00ff00>Plus</color> ver." + SSPPlugin.Version; //<color=#ffddef>AZ</color>
+            __instance.text.text += " + <color=#ff0000>SuperSimplePlus</color> ver." + SSPPlugin.Version; //<color=#ffddef>AZ</color>
         }
     }
 }
