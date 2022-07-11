@@ -1,61 +1,47 @@
+//引用=>https://github.com/reitou-mugicha/TownOfSuper/blob/main/TownOfSuper/Main.cs
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using BepInEx;
 using BepInEx.IL2CPP;
+using BepInEx.Configuration;
 using HarmonyLib;
-using UnityEngine;
 
-namespace SuperSimplePlus
+namespace TownOfSuper
 {
-    [BepInPlugin(Id, "SuperSimplePlus", VersionString)]
-    [BepInProcess("Among Us.exe")]
-    public class SuperSimplePlusPlugin : BasePlugin
+    [BepInPlugin(Id, "SuperSimplePlus", Version)]
+    public class SSPPlugin : BasePlugin
     {
-        public const string Id = "com.satsumaimoamo.SuperSimplePlus";
+        public const String Id = "jp.satsumaimoamo.SuperSimplePlus";
+        public const String Version = "1.0.0";
 
-        public const string VersionString = "1.0.0";
-
-        public static System.Version Version = System.Version.Parse(VersionString);
-        internal static BepInEx.Logging.ManualLogSource Logger;
-        public static Sprite ModStamp;
-        public static int optionsPage = 1;
-        public Harmony Harmony { get; } = new Harmony(Id);
-        public static SuperSimplePlusPlugin Instance;
-        public static Dictionary<string, Dictionary<int, string>> StringDATE;
-        public static bool IsUpdate = false;
-        public static string NewVersion = "";
-        public static string thisname;
+        public static ConfigEntry<bool> debugTool { get; set; }
+        public static ConfigEntry<string> StereotypedText { get; set; }
+        public Harmony Harmony = new Harmony(Id);
 
         public override void Load()
         {
-            Logger = Log;
-            Instance = this;
-            // All Load() Start
-            // All Load() End
 
-            // Old Delete Start
+            debugTool = Config.Bind("Client Options", "Debug Tool", false);
+            StereotypedText = Config.Bind("Client Options", "StereotypedText", "TownOfSuper定型文");
 
-            try
-            {
-                DirectoryInfo d = new(Path.GetDirectoryName(Application.dataPath) + @"\BepInEx\plugins");
-                string[] files = d.GetFiles("*.dll.old").Select(x => x.FullName).ToArray(); // Getting old versions
-                foreach (string f in files)
-                    File.Delete(f);
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine("Exception occured when clearing old versions:\n" + e);
-            }
-
-
-            var assembly = Assembly.GetExecutingAssembly();
-
-            StringDATE = new Dictionary<string, Dictionary<int, string>>();
             Harmony.PatchAll();
         }
     }
-}
 
+    [HarmonyPatch(typeof(ModManager), nameof(ModManager.LateUpdate))]
+    public class ShowModStampPatch
+    {
+        public static void Postfix(ModManager __instance)
+        {
+            __instance.ShowModStamp();
+        }
+    }
+
+    [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
+    public class VersionShowerPatch
+    {
+        public static void Postfix(VersionShower __instance)
+        {
+            __instance.text.text += " & <color=#ffa500>Super</color><color=#ff0000>Simple</color><color=#00ff00>Plus</color> ver." + SSPPlugin.Version; //<color=#ffddef>AZ</color>
+        }
+    }
+}
