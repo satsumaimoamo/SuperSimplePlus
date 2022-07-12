@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,6 +7,7 @@ using HarmonyLib;
 using UnityEngine.UI;
 using Version = SemanticVersioning.Version;
 using BepInEx;
+using Twitch;
 
 namespace SuperSimplePlus.Modules
 {
@@ -15,13 +15,14 @@ namespace SuperSimplePlus.Modules
     {
         public static string Tag;
         public static JObject data;
+        public static GenericPopup popup;
 
         public async static Task<bool> IsNewer()//最新版かどうか判定
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "SuperSimplePlus Updater");
 
-            var req = await client.GetAsync("https://api.github.com/repos/satsumaimoamo/SuperSimplePlus/releases/latest", HttpCompletionOption.ResponseContentRead);
+            var req = await client.GetAsync("https://api.github.com/repos/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa9841/SuperSimplePlus/releases/latest", HttpCompletionOption.ResponseContentRead);
             if (!req.IsSuccessStatusCode) return false;
 
             var dataString = await req.Content.ReadAsStringAsync();
@@ -35,6 +36,16 @@ namespace SuperSimplePlus.Modules
         }
         public async static Task<bool> DownloadUpdate()
         {
+            popup = UnityEngine.Object.Instantiate(TwitchManager.Instance.TwitchPopup);
+            popup.TextAreaTMP.fontSize *= 0.7f;
+            popup.TextAreaTMP.enableAutoSizing = false;
+
+            popup.Show();
+
+            var button = popup.transform.GetChild(2).gameObject;
+            button.SetActive(false);
+            popup.TextAreaTMP.text = $"SuperSimplePlusをアップデート中\nしばらくお待ちください";
+
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("User-Agent", "SuperSimplePlus Updater");
 
@@ -86,7 +97,7 @@ namespace SuperSimplePlus.Modules
                     PassiveButton passiveButtonSSPUpdate = buttonSSPUpdate.GetComponent<PassiveButton>();
 
                     passiveButtonSSPUpdate.OnClick = new Button.ButtonClickedEvent();
-                    passiveButtonSSPUpdate.OnClick.AddListener((System.Action)(() => Task.Run(DownloadUpdate)));
+                    passiveButtonSSPUpdate.OnClick.AddListener((System.Action)(() => popup.TextAreaTMP.text = Task.Run(DownloadUpdate).Result  ? "SuperSimplePlusが正常に更新されました。\nゲームを再起動してください" : "アップデートに失敗しました\n後で再試行してください。\nまたは手動でアップデートしてください。"));
                 }
             }
         }
