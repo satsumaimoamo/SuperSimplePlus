@@ -16,9 +16,11 @@ namespace SuperSimplePlus
         public static ConfigEntry<bool> debugTool { get; set; }
         public static ConfigEntry<string> StereotypedText { get; set; }
         public Harmony Harmony = new Harmony(Id);
+        internal static BepInEx.Logging.ManualLogSource Logger;
 
         public override void Load()
         {
+            Logger = Log;
 
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
             StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
