@@ -71,7 +71,6 @@ namespace SuperSimplePlus.Modules
                 Task<bool> SSPUpdateCheck = Task.Run(IsNewer);
                 if (SSPUpdateCheck.Result) //最新版じゃなかったらボタンを作る
                 {
-                    SSPPlugin.Logger.LogInfo("古いバージョンです");
                     var template = GameObject.Find("ExitGameButton");
                     if (template == null) return;
 
