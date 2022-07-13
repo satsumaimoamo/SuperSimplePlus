@@ -11,14 +11,18 @@ namespace SuperSimplePlus
     public class SSPPlugin : BasePlugin
     {
         public const String Id = "jp.satsumaimoamo.SuperSimplePlus";
-        public const String Version = "1.0.0";
+        public const String Version = "0.0.1";
+
+        public const String ColoredModName = "<color=#ff0000>SuperSimplePlus</color>";
 
         public static ConfigEntry<bool> debugTool { get; set; }
         public static ConfigEntry<string> StereotypedText { get; set; }
-        public Harmony Harmony = new Harmony(Id);
+        public Harmony Harmony = new(Id);
+        internal static BepInEx.Logging.ManualLogSource Logger;
 
         public override void Load()
         {
+            Logger = Log;
 
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
             StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
@@ -41,7 +45,7 @@ namespace SuperSimplePlus
     {
         public static void Postfix(VersionShower __instance)
         {
-            __instance.text.text += " + <color=#ff0000>SuperSimplePlus</color> ver." + SSPPlugin.Version; //<color=#ffddef>AZ</color>
+            __instance.text.text += $" + {SSPPlugin.ColoredModName} ver." + SSPPlugin.Version; //<color=#ffddef>AZ</color>
         }
     }
 }
