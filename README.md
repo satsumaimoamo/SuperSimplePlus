@@ -14,12 +14,12 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 
 # 実装予定の機能
 ・PC以外をキック<br>
-*追加機能募集中です!*
+**追加機能募集中です!**
 
 ## クレジット
-[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)Thanks to *ykundesu*!!<br>
-[TownOfSuper](https://github.com/reitou-mugicha/TownOfSuper)Thanks to *reitou-mugicha*!!<br>
-[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles)Thanks to *Eisbison*!!<br>
+[SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)Thanks to **ykundesu**!!<br>
+[TownOfSuper](https://github.com/reitou-mugicha/TownOfSuper)Thanks to **reitou-mugicha**!!<br>
+[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles)Thanks to **Eisbison**!!<br>
 
 ## 機能一覧
 #### ホストのみ
