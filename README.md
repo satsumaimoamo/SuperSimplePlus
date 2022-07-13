@@ -19,6 +19,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 ## クレジット
 [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)Thanks to *ykundesu*!!<br>
 [TownOfSuper](https://github.com/reitou-mugicha/TownOfSuper)Thanks to *reitou-mugicha*!!<br>
+[TheOtherRoles](https://github.com/Eisbison/TheOtherRoles)Thanks to *Eisbison*!!<br>
 
 ## 機能一覧
 #### ホストのみ
@@ -26,3 +27,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 | ------------------- | ---------------------------- | ---------------- |
 | `左Shift`+`A`+`右Shift` | 廃村                         | 試合中いつでも         |
 | `左Shift`+`S`+`右Shift` | 投票をスキップ | 会議中         |
+#### その他機能
+| 機能                | 操作                        |
+| ------------------- | ---------------------------- |
+| アップデート機能 | タイトル画面の右上のアップデートボタンを押してアップデート |

@@ -1,4 +1,5 @@
-﻿using System;
+﻿//参考=>https://github.com/Eisbison/TheOtherRoles/blob/main/TheOtherRoles/Modules/ModUpdater.cs
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -89,12 +90,12 @@ namespace SuperSimplePlus.Modules
         {
             public static void Postfix(MainMenuManager __instance)
             {
+                string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus");
+                if (File.Exists(filePath + ".old")) File.Delete(filePath + ".old");
+
                 Task<bool> SSPUpdateCheck = Task.Run(IsNewer);
                 if (SSPUpdateCheck.Result) //最新版じゃなかったらボタンを作る
                 {
-                    string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus.dll");
-                    if (File.Exists(filePath + ".old")) File.Delete(filePath + ".old");
-
                     popup = UnityEngine.Object.Instantiate(TwitchManager.Instance.TwitchPopup);
                     popup.TextAreaTMP.fontSize *= 0.7f;
                     popup.TextAreaTMP.enableAutoSizing = false;
