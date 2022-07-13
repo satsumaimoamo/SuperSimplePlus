@@ -67,7 +67,7 @@ namespace SuperSimplePlus.Modules
                 if (downloadURI.Length == 0) return false;
 
                 var res = await client.GetAsync(downloadURI, HttpCompletionOption.ResponseContentRead);
-                string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus");
+                string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus.dll");
                 if (File.Exists(filePath + ".old")) File.Delete(filePath + ".old");
                 if (File.Exists(filePath)) File.Move(filePath, filePath + ".old");
 
@@ -90,7 +90,7 @@ namespace SuperSimplePlus.Modules
         {
             public static void Postfix(MainMenuManager __instance)
             {
-                string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus");
+                string filePath = Path.Combine(Paths.PluginPath, "SuperSimplePlus.dll");//Oldファイルを削除する
                 if (File.Exists(filePath + ".old")) File.Delete(filePath + ".old");
 
                 Task<bool> SSPUpdateCheck = Task.Run(IsNewer);
