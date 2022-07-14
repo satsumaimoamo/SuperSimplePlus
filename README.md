@@ -8,7 +8,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 このmodは廃村機能などのごく僅かな機能しか無い便利modです！<br>
 **絶対**他modに干渉しないようにします。<br>
 
-https://discord.gg/rdFFf4mzxV
+[Discordサーバー](https://discord.gg/rdFFf4mzxV)
 
 # 製作者
 [さつまいも](https://github.com/satsumaimoamo) ([Twitter](https://twitter.com/satsumaimo_SNR))<br>
