@@ -16,10 +16,16 @@ namespace SuperSimplePlus
 
         private const string blankText = "[BLANK]";
 
+        public ModTranslation()
+        {
+
+        }
+
+
         public static void Load()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream("SuperSimplePlus.Resources.stringData.json");
+            Stream stream = assembly.GetManifestResourceStream("SuperSimplePlus.Resources.TranslationData.json");
             var byteArray = new byte[stream.Length];
             var read = stream.Read(byteArray, 0, (int)stream.Length);
             string json = System.Text.Encoding.UTF8.GetString(byteArray);
@@ -55,7 +61,7 @@ namespace SuperSimplePlus
                 }
             }
 
-            Logger.Info($"Language: {stringData.Keys}");
+            Logger.Info($"Language: {stringData.Keys}","ModTranslation");
         }
 
         public static string getString(string key, string def = null)

@@ -43,7 +43,7 @@ namespace SuperSimplePlus.Modules
             {
                 PopupButton = popup.transform.GetChild(2).gameObject;
                 PopupButton.SetActive(false);
-                popup.TextAreaTMP.text = $"SuperSimplePlusをアップデート中\nしばらくお待ちください";
+                popup.TextAreaTMP.text = string.Format(ModTranslation.getString("UpdateInProgress"),SSPPlugin.ColoredModName);
 
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("User-Agent", "SuperSimplePlus Updater");
@@ -109,7 +109,7 @@ namespace SuperSimplePlus.Modules
                     var textSSPUpdateButton = buttonSSPUpdate.transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
                     __instance.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>
                     {
-                        textSSPUpdateButton.SetText($"{SSPPlugin.ColoredModName}\nをアップデートする");
+                        textSSPUpdateButton.SetText(String.Format(ModTranslation.getString("UpdateButton"),SSPPlugin.ColoredModName));
                     })));
 
                     PassiveButton passiveButtonSSPUpdate = buttonSSPUpdate.GetComponent<PassiveButton>();
@@ -117,7 +117,7 @@ namespace SuperSimplePlus.Modules
                     passiveButtonSSPUpdate.OnClick = new Button.ButtonClickedEvent();
                     passiveButtonSSPUpdate.OnClick.AddListener((System.Action)(() => {
                         popup.Show();
-                        popup.TextAreaTMP.text = Task.Run(DownloadUpdate).Result ? $"{SSPPlugin.ColoredModName}が正常に更新されました。\nゲームを再起動してください" : "アップデートに失敗しました\n後で再試行してください。\nまたは手動でアップデートしてください。";
+                        popup.TextAreaTMP.text = Task.Run(DownloadUpdate).Result ? String.Format(ModTranslation.getString("UpdateSuccess"),SSPPlugin.ColoredModName) : ModTranslation.getString("UpdateFailed");
                         PopupButton.SetActive(true);
                     }));
                 }
