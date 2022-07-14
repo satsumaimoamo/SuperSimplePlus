@@ -29,6 +29,9 @@ namespace SuperSimplePlus
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
             StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
 
+            //Load
+            ModTranslation.Load();
+
             Harmony.PatchAll();
         }
     }

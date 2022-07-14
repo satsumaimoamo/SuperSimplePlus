@@ -20,6 +20,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 [SuperNewRoles](https://github.com/ykundesu/SuperNewRoles)Thanks to **ykundesu**!!<br>
 [TownOfSuper](https://github.com/reitou-mugicha/TownOfSuper)Thanks to **reitou-mugicha**!!<br>
 [TheOtherRoles](https://github.com/Eisbison/TheOtherRoles)Thanks to **Eisbison**!!<br>
+[TheOtherRoles GM Edition](https://github.com/yukinogatari/TheOtherRoles-GM)Thanks to **yukinogatari**!!<br>
 
 ## 機能一覧
 #### ホストのみ

@@ -14,10 +14,12 @@ namespace SuperSimplePlus
         public static int defaultLanguage = (int)SupportedLangs.English;
         public static Dictionary<string, Dictionary<int, string>> stringData;
 
+        private const string blankText = "[BLANK]";
+
         public static void Load()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            Stream stream = assembly.GetManifestResourceStream("TheOtherRoles.Resources.stringData.json");
+            Stream stream = assembly.GetManifestResourceStream("SuperSimplePlus.Resources.stringData.json");
             var byteArray = new byte[stream.Length];
             var read = stream.Read(byteArray, 0, (int)stream.Length);
             string json = System.Text.Encoding.UTF8.GetString(byteArray);
@@ -54,6 +56,34 @@ namespace SuperSimplePlus
             }
 
             Logger.Info($"Language: {stringData.Keys}");
+        }
+
+        public static string getString(string key, string def = null)
+        {
+            // Strip out color tags.
+            string keyClean = Regex.Replace(key, "<.*?>", "");
+            keyClean = Regex.Replace(keyClean, "^-\\s*", "");
+            keyClean = keyClean.Trim();
+
+            def ??= key;
+            if (!stringData.ContainsKey(keyClean))
+            {
+                return def;
+            }
+
+            var data = stringData[keyClean];
+            int lang = (int)SaveManager.LastLanguage;
+
+            if (data.ContainsKey(lang))
+            {
+                return key.Replace(keyClean, data[lang]);
+            }
+            else if (data.ContainsKey(defaultLanguage))
+            {
+                return key.Replace(keyClean, data[defaultLanguage]);
+            }
+
+            return key;
         }
     }
 }
