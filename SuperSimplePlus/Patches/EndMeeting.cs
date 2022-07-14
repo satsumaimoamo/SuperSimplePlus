@@ -1,7 +1,7 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace SuperSimplePlus
+namespace SuperSimplePlus.Patches
 {
     [HarmonyPatch(typeof(ControllerManager), nameof(ControllerManager.Update))]
     class DebugManager

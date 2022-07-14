@@ -24,12 +24,17 @@ namespace SuperSimplePlus
         {
             Logger = Log;
 
-            SuperSimplePlus.Logger.Info("SuperSimplePlusLoaded!!!!!!!!!!!!!!!!!","SuperSimplePlus");
+            SuperSimplePlus.Logger.Info("SuperSimplePlusLoading!!!!!!!!!!!!!!!!!", "SuperSimplePlus");
 
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
             StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
 
+            //Load
+            ModTranslation.Load();
+
             Harmony.PatchAll();
+
+            SuperSimplePlus.Logger.Info("SuperSimplePlus End of loading!!!!!!!!!!!!!!!!!", "SuperSimplePlus");
         }
     }
 
