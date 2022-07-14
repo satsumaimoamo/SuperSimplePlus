@@ -1,3 +1,4 @@
+//引用=>https://github.com/tukasa0001/TownOfHost/blob/main/Modules/ExtendedPlayerControl.cs
 namespace SuperSimplePlus.Patches
 {
     public static class ExtendedPlayerControl
