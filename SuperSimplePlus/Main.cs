@@ -24,6 +24,8 @@ namespace SuperSimplePlus
         {
             Logger = Log;
 
+            SuperSimplePlus.Logger.Info("SuperSimplePlusLoaded!!!!!!!!!!!!!!!!!","SuperSimplePlus");
+
             debugTool = Config.Bind("Client Options", "Debug Tool", false);
             StereotypedText = Config.Bind("Client Options", "StereotypedText", "SuperSimplePlus定型文");
 

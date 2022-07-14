@@ -16,12 +16,14 @@ namespace SuperSimplePlus.Patches
                     //廃村
                     if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.RightShift))//Aと右左シフトを押したとき
                     {
+                        Logger.Info("廃村","EndGame");
                         ShipStatus.RpcEndGame(GameOverReason.HumansByTask, false);//タスクを終わらせる
                         CachedShipStatus.enabled = false;
                     }
                     //ミーティング強制終了
                     if (Input.GetKeyDown(KeyCode.S) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.RightShift))//Sと右左シフトを押したとき
                     {
+                        Logger.Info("会議強制終了","MeetingHud");
                         MeetingHud.Instance.RpcClose();//会議を爆破
                     }
                 }

@@ -32,7 +32,7 @@ namespace SuperSimplePlus.Modules
             data = JObject.Parse(dataString);
 
             Tag = data["tag_name"]?.ToString().TrimStart('v');
-            SSPPlugin.Logger.LogInfo($"最新版かどうか判定\ngithub:{Tag}\n入ってるバージョン:{SSPPlugin.Version}");
+            Logger.Info($"最新版かどうか判定\ngithub:{Tag}\n入ってるバージョン:{SSPPlugin.Version}","ModUpdater");
 
             if (!Version.TryParse(Tag, out var myVersion)) return false;
             return myVersion.BaseVersion() > Version.Parse(SSPPlugin.Version);
@@ -78,7 +78,7 @@ namespace SuperSimplePlus.Modules
                 PopupButton.SetActive(true);
             }
             catch (Exception e) {
-                SSPPlugin.Logger.LogError($"[ModUpdater:Error]{e}");
+                Logger.Error($"{e}","ModUpdater");
                 return false;
             }
 
