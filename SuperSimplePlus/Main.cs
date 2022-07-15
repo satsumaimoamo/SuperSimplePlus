@@ -11,9 +11,9 @@ namespace SuperSimplePlus
     public class SSPPlugin : BasePlugin
     {
         public const String Id = "jp.satsumaimoamo.SuperSimplePlus";
-        public const String Version = "0.0.1";
+        public const String Version = "1.1.0";
 
-        public const String ColoredModName = "<color=#ff0000>SuperSimplePlus</color>";
+        public const String ColoredModName = "<color=#8cfc03>SuperSimplePlus</color>";
 
         public static ConfigEntry<bool> debugTool { get; set; }
         public static ConfigEntry<string> StereotypedText { get; set; }
