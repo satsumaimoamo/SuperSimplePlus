@@ -8,6 +8,8 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 このmodは廃村機能などのごく僅かな機能しか無い便利modです！<br>
 **絶対**他modに干渉しないようにします。<br>
 
+[![](https://img.shields.io/discord/996781291871678544?label=Discord)](https://discord.gg/rdFFf4mzxV)
+
 # 製作者
 [さつまいも](https://github.com/satsumaimoamo) ([Twitter](https://twitter.com/satsumaimo_SNR))<br>
 製作者はいつでも募集しています！discordかTwitterかissueまで！
@@ -21,6 +23,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 [TownOfSuper](https://github.com/reitou-mugicha/TownOfSuper)Thanks to **reitou-mugicha**!!<br>
 [TheOtherRoles](https://github.com/Eisbison/TheOtherRoles)Thanks to **Eisbison**!!<br>
 [TheOtherRoles GM Edition](https://github.com/yukinogatari/TheOtherRoles-GM)Thanks to **yukinogatari**!!<br>
+[Town Of Host](https://github.com/tukasa0001/TownOfHost) - Thanks to **tukasa0001**!!<br>
 
 ## 機能一覧
 #### ホストのみ
@@ -28,6 +31,7 @@ This mod is not affiliated with Among Us or Innersloth LLC, and the content cont
 | ------------------- | ---------------------------- | ---------------- |
 | `左Shift`+`A`+`右Shift` | 廃村                         | 試合中いつでも         |
 | `左Shift`+`S`+`右Shift` | 投票をスキップ | 会議中         |
+| `左Shift`+`Z`+`右Shift` | 会議開始                         | 試合中いつでも         |
 #### その他機能
 | 機能                | 操作                        |
 | ------------------- | ---------------------------- |

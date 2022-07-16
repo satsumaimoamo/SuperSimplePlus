@@ -104,7 +104,7 @@ namespace SuperSimplePlus.Modules
                     if (template == null) return;
 
                     var buttonSSPUpdate = UnityEngine.Object.Instantiate(template, null);
-                    buttonSSPUpdate.transform.localPosition = new Vector3(buttonSSPUpdate.transform.localPosition.x + 9.4f, buttonSSPUpdate.transform.localPosition.y + 4.8f, buttonSSPUpdate.transform.localPosition.z);
+                    buttonSSPUpdate.transform.localPosition = new Vector3(buttonSSPUpdate.transform.localPosition.x + 9.4f, buttonSSPUpdate.transform.localPosition.y + 4.2f, buttonSSPUpdate.transform.localPosition.z);
 
                     var textSSPUpdateButton = buttonSSPUpdate.transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
                     __instance.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>
