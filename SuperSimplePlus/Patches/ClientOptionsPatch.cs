@@ -1,3 +1,4 @@
+//参考=>https://github.com/Eisbison/TheOtherRoles/blob/main/TheOtherRoles/Patches/ClientOptionsPatch.cs
 using HarmonyLib;
 using UnityEngine;
 using System;
