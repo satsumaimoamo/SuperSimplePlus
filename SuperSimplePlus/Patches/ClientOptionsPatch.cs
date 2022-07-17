@@ -114,7 +114,7 @@ namespace SuperSimplePlus.Patches
                 button.onState = info.DefaultValue;
                 button.Background.color = button.onState ? Color.green : Palette.ImpostorRed;
 
-                button.Text.text = info.Title;
+                button.Text.text = ModTranslation.getString(info.Title);
                 button.Text.fontSizeMin = button.Text.fontSizeMax = 2.5f;
                 button.Text.font = Object.Instantiate(titleText.font);
                 button.Text.GetComponent<RectTransform>().sizeDelta = new Vector2(2, 2);
