@@ -10,7 +10,6 @@ namespace SuperSimplePlus.Patches
         [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
         public static void HudManager_UpdatePostfix(HudManager __instance)
         {
-            ClientOptionsPatch.SSPSettingButton.transform.position = new Vector3(__instance.MapButton.transform.position.x,__instance.MapButton.transform.position.y - 0.6f, __instance.MapButton.transform.position.z);
             if (ClientOptionsPatch.SSPOptionsMenu)
             {
                 PlayerControl.LocalPlayer.moveable = false;

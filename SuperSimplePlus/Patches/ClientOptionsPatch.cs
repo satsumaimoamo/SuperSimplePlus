@@ -43,17 +43,19 @@ namespace SuperSimplePlus.Patches
         public static void HudManager_StartPostfix(HudManager __instance)
         {
             SSPSettingButton = GameObject.Instantiate(HudManager.Instance.MapButton.gameObject);
-            SSPSettingButton.transform.SetParent(HudManager.Instance.transform);
+            SSPSettingButton.transform.SetParent(HudManager.Instance.transform.FindChild("Buttons").FindChild("TopRight"));
 
             SSPSettingButton.SetActive(true);
 
-            SSPSettingButton.GetComponent<ButtonBehavior>().OnClick.RemoveAllListeners();
+            SSPSettingButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
             SSPSettingButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() => { SSPSettingButtonOnClick(); }));
 
             buttonPrefab = Object.Instantiate(HudManager.Instance.transform.FindChild("Menu").GetComponent<OptionsMenuBehaviour>().CensorChatButton);
             Object.DontDestroyOnLoad(buttonPrefab);
             buttonPrefab.name = "CensorChatPrefab";
             buttonPrefab.gameObject.SetActive(false);
+
+            SSPSettingButton.transform.localPosition = new(SSPSettingButton.transform.localPosition.x, SSPSettingButton.transform.localPosition.y - 0.75f, SSPSettingButton.transform.localPosition.z);
         }
 
         private static void SSPSettingButtonOnClick()
@@ -68,10 +70,10 @@ namespace SuperSimplePlus.Patches
             GameObject SSPOptionsMenuCloseButton = GameObject.Instantiate(HudManager.Instance.MapButton.gameObject);
             SSPOptionsMenuCloseButton.SetActive(true);
             SSPOptionsMenuCloseButton.transform.SetParent(SSPOptionsMenu.transform);
-            SSPOptionsMenuCloseButton.transform.position = new(0.5f,4.7f,SSPOptionsMenuCloseButton.transform.position.z);
+            SSPOptionsMenuCloseButton.transform.localPosition = new(2.25f, 2.44f, SSPOptionsMenuCloseButton.transform.localPosition.z);
             SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
             SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sprite = GetCloseButtonSprite();
-            SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick.RemoveAllListeners();
+            SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
             SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() =>
             {
                 GameObject.Destroy(SSPOptionsMenu);
