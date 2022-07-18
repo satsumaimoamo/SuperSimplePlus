@@ -13,7 +13,7 @@ namespace SuperSimplePlus.Patches
     [HarmonyPatch]
     public static class ClientOptionsPatch
     {
-        private static SelectionBehaviour[] AllOptions = {
+        private static readonly SelectionBehaviour[] AllOptions = {
             new SelectionBehaviour("DebugModeButton", () => SSPPlugin.debugTool.Value = !SSPPlugin.debugTool.Value, SSPPlugin.debugTool.Value),
         };
 
@@ -48,6 +48,7 @@ namespace SuperSimplePlus.Patches
 
             SSPSettingButton.SetActive(true);
 
+            SSPSettingButton.GetComponent<SpriteRenderer>().sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.SettingButton.png",115f);
             SSPSettingButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
             SSPSettingButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() => { SSPSettingButtonOnClick(); }));
 
@@ -73,7 +74,7 @@ namespace SuperSimplePlus.Patches
             SSPOptionsMenuCloseButton.transform.SetParent(SSPOptionsMenu.transform);
             SSPOptionsMenuCloseButton.transform.localPosition = new(2.25f, 2.44f, SSPOptionsMenuCloseButton.transform.localPosition.z);
             SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sprite = GetCloseButtonSprite();
+            SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.CloseButton.png", 115f); ;
             SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
             SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() =>
             {
@@ -88,15 +89,6 @@ namespace SuperSimplePlus.Patches
             title.name = "TitleText";
 
             SetUpOptions();
-        }
-
-
-        private static Sprite CloseButtonSprite;
-        public static Sprite GetCloseButtonSprite()
-        {
-            if (CloseButtonSprite) return CloseButtonSprite;
-            CloseButtonSprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.CloseButton.png", 115f);
-            return CloseButtonSprite;
         }
 
         private static void SetUpOptions()
