@@ -1,8 +1,8 @@
 //引用=>https://github.com/reitou-mugicha/TownOfSuper/blob/main/TownOfSuper/Main.cs
 using System;
 using BepInEx;
-using BepInEx.IL2CPP;
 using BepInEx.Configuration;
+using BepInEx.IL2CPP;
 using HarmonyLib;
 
 namespace SuperSimplePlus

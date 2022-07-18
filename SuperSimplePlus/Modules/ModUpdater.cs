@@ -1,15 +1,15 @@
-﻿//参考=>https://github.com/Eisbison/TheOtherRoles/blob/main/TheOtherRoles/Modules/ModUpdater.cs
+//参考=>https://github.com/Eisbison/TheOtherRoles/blob/main/TheOtherRoles/Modules/ModUpdater.cs
 using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using UnityEngine;
-using Newtonsoft.Json.Linq;
+using BepInEx;
 using HarmonyLib;
+using Newtonsoft.Json.Linq;
+using Twitch;
+using UnityEngine;
 using UnityEngine.UI;
 using Version = SemanticVersioning.Version;
-using BepInEx;
-using Twitch;
 
 namespace SuperSimplePlus.Modules
 {
@@ -32,10 +32,9 @@ namespace SuperSimplePlus.Modules
             data = JObject.Parse(dataString);
 
             Tag = data["tag_name"]?.ToString().TrimStart('v');
-            Logger.Info($"最新版かどうか判定\ngithub:{Tag}\n入ってるバージョン:{SSPPlugin.Version}","ModUpdater");
+            Logger.Info($"最新版かどうか判定\ngithub:{Tag}\n入ってるバージョン:{SSPPlugin.Version}", "ModUpdater");
 
-            if (!Version.TryParse(Tag, out var myVersion)) return false;
-            return myVersion.BaseVersion() > Version.Parse(SSPPlugin.Version);
+            return Version.TryParse(Tag, out var myVersion) && myVersion.BaseVersion() > Version.Parse(SSPPlugin.Version);
         }
         public async static Task<bool> DownloadUpdate()
         {
@@ -43,7 +42,7 @@ namespace SuperSimplePlus.Modules
             {
                 PopupButton = popup.transform.GetChild(2).gameObject;
                 PopupButton.SetActive(false);
-                popup.TextAreaTMP.text = string.Format(ModTranslation.getString("UpdateInProgress"),SSPPlugin.ColoredModName);
+                popup.TextAreaTMP.text = string.Format(ModTranslation.getString("UpdateInProgress"), SSPPlugin.ColoredModName);
 
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Add("User-Agent", "SuperSimplePlus Updater");
@@ -77,8 +76,9 @@ namespace SuperSimplePlus.Modules
 
                 PopupButton.SetActive(true);
             }
-            catch (Exception e) {
-                Logger.Error($"{e}","ModUpdater");
+            catch (Exception e)
+            {
+                Logger.Error($"{e}", "ModUpdater");
                 return false;
             }
 
@@ -109,15 +109,16 @@ namespace SuperSimplePlus.Modules
                     var textSSPUpdateButton = buttonSSPUpdate.transform.GetChild(0).GetComponent<TMPro.TMP_Text>();
                     __instance.StartCoroutine(Effects.Lerp(0.1f, new System.Action<float>((p) =>
                     {
-                        textSSPUpdateButton.SetText(String.Format(ModTranslation.getString("UpdateButton"),SSPPlugin.ColoredModName));
+                        textSSPUpdateButton.SetText(String.Format(ModTranslation.getString("UpdateButton"), SSPPlugin.ColoredModName));
                     })));
 
                     PassiveButton passiveButtonSSPUpdate = buttonSSPUpdate.GetComponent<PassiveButton>();
 
                     passiveButtonSSPUpdate.OnClick = new Button.ButtonClickedEvent();
-                    passiveButtonSSPUpdate.OnClick.AddListener((System.Action)(() => {
+                    passiveButtonSSPUpdate.OnClick.AddListener((System.Action)(() =>
+                    {
                         popup.Show();
-                        popup.TextAreaTMP.text = Task.Run(DownloadUpdate).Result ? String.Format(ModTranslation.getString("UpdateSuccess"),SSPPlugin.ColoredModName) : ModTranslation.getString("UpdateFailed");
+                        popup.TextAreaTMP.text = Task.Run(DownloadUpdate).Result ? String.Format(ModTranslation.getString("UpdateSuccess"), SSPPlugin.ColoredModName) : ModTranslation.getString("UpdateFailed");
                         PopupButton.SetActive(true);
                     }));
                 }
