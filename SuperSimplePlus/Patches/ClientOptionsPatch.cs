@@ -85,7 +85,7 @@ namespace SuperSimplePlus.Patches
             var title = Object.Instantiate(titleText, SSPOptionsMenu.transform);
             title.GetComponent<RectTransform>().localPosition = Vector3.up * 2.3f;
             title.gameObject.SetActive(true);
-            title.text = $"{SSPPlugin.ColoredModName}の設定";
+            title.text = ModTranslation.getString("SSPSettings");
             title.name = "TitleText";
 
             SetUpOptions();
