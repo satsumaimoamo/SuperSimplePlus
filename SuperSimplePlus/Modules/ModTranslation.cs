@@ -52,8 +52,7 @@ namespace SuperSimplePlus
 
                         if (text != null && text.Length > 0)
                         {
-                            if (text == blankText) strings[j] = "";
-                            else strings[j] = text;
+                            strings[j] = text == blankText ? "" : text;
                         }
                     }
 
@@ -61,7 +60,7 @@ namespace SuperSimplePlus
                 }
             }
 
-            Logger.Info($"Language: {stringData.Keys}","ModTranslation");
+            Logger.Info($"Language: {stringData.Keys}", "ModTranslation");
         }
 
         public static string getString(string key, string def = null)

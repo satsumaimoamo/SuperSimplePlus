@@ -4,7 +4,7 @@ namespace SuperSimplePlus.Patches
 {
     public class PingTrackerPatch
     {
-        [HarmonyPatch(typeof(PingTracker),nameof(PingTracker.Update))]
+        [HarmonyPatch(typeof(PingTracker), nameof(PingTracker.Update))]
         public class PingTrackerUpdatePatch
         {
             public static void Postfix(PingTracker __instance)
