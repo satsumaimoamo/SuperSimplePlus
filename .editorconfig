@@ -6,7 +6,7 @@ root = true
 [*.cs]
 indent_style = space
 indent_size = 4
-end_of_line = lf
+end_of_line = crlf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
@@ -55,9 +55,9 @@ dotnet_style_operator_placement_when_wrapping = beginning_of_line
 # 複合代入を使用する
 dotnet_style_prefer_compound_assignment = true:suggestion
 # 代入に条件式を使用する
-dotnet_style_prefer_conditional_expression_over_assignment = true:slient
+dotnet_style_prefer_conditional_expression_over_assignment = true:suggestion
 # 戻り値に条件式を使用する
-dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_style_prefer_conditional_expression_over_return = true:suggestion
 # 推論された匿名型のメンバー名を優先する
 dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 # 推論されたタプル要素名を優先する
@@ -70,7 +70,7 @@ dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion
 
 # 読み取り専用修飾子を追加する
-dotnet_style_readonly_field = true:silent
+dotnet_style_readonly_field = true:suggestion
 
 # 使用されていないパラメーターを削除する
 dotnet_code_quality_unused_parameters = all:silent
