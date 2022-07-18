@@ -1,9 +1,9 @@
 //参考=>https://github.com/Eisbison/TheOtherRoles/blob/main/TheOtherRoles/Patches/ClientOptionsPatch.cs
-using HarmonyLib;
-using UnityEngine;
 using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.UI.Button;
 using Object = UnityEngine.Object;
@@ -48,9 +48,11 @@ namespace SuperSimplePlus.Patches
 
             SSPSettingButton.SetActive(true);
 
-            SSPSettingButton.GetComponent<SpriteRenderer>().sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.SettingButton.png",115f);
-            SSPSettingButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
-            SSPSettingButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() => { SSPSettingButtonOnClick(); }));
+            SSPSettingButton.GetComponent<SpriteRenderer>().sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.SettingButton.png", 115f);
+
+            ButtonBehavior SSPSettingButtonButtonBehavior = SSPSettingButton.GetComponent<ButtonBehavior>();
+            SSPSettingButtonButtonBehavior.OnClick = new ButtonClickedEvent();
+            SSPSettingButtonButtonBehavior.OnClick.AddListener((UnityAction)(() => { SSPSettingButtonOnClick(); }));
 
             buttonPrefab = Object.Instantiate(HudManager.Instance.transform.FindChild("Menu").GetComponent<OptionsMenuBehaviour>().CensorChatButton);
             Object.DontDestroyOnLoad(buttonPrefab);
@@ -73,10 +75,14 @@ namespace SuperSimplePlus.Patches
             SSPOptionsMenuCloseButton.SetActive(true);
             SSPOptionsMenuCloseButton.transform.SetParent(SSPOptionsMenu.transform);
             SSPOptionsMenuCloseButton.transform.localPosition = new(2.25f, 2.44f, SSPOptionsMenuCloseButton.transform.localPosition.z);
-            SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>().sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.CloseButton.png", 115f); ;
-            SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick = new ButtonClickedEvent();
-            SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>().OnClick.AddListener((UnityAction)(() =>
+
+            SpriteRenderer OptionsMenuCloseButtonSpriteRender = SSPOptionsMenuCloseButton.GetComponent<SpriteRenderer>();
+            OptionsMenuCloseButtonSpriteRender.sortingOrder = 1;
+            OptionsMenuCloseButtonSpriteRender.sprite = Helpers.loadSpriteFromResources("SuperSimplePlus.Resources.CloseButton.png", 115f);
+
+            ButtonBehavior OptionsMenuCloseButtonButtonBehaviour = SSPOptionsMenuCloseButton.GetComponent<ButtonBehavior>();
+            OptionsMenuCloseButtonButtonBehaviour.OnClick = new ButtonClickedEvent();
+            OptionsMenuCloseButtonButtonBehaviour.OnClick.AddListener((UnityAction)(() =>
             {
                 GameObject.Destroy(SSPOptionsMenu);
                 PlayerControl.LocalPlayer.moveable = true;

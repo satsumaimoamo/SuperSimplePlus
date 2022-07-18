@@ -5,9 +5,9 @@ namespace SuperSimplePlus.Patches
     [HarmonyPatch]
     public class PlayerControlPatch
     {
-        [HarmonyPatch(typeof(PlayerControl),nameof(PlayerControl.MurderPlayer))]
+        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.MurderPlayer))]
         [HarmonyPostfix]
-        public static void PlayerControl_MurderPlayerPostfixPatch(PlayerControl __instance,[HarmonyArgument(0)] PlayerControl target)
+        public static void PlayerControl_MurderPlayerPostfixPatch(PlayerControl __instance, [HarmonyArgument(0)] PlayerControl target)
         {
             if (PlayerControl.GameOptions.MapId == 5 && target.PlayerId == PlayerControl.LocalPlayer.PlayerId)
             {
