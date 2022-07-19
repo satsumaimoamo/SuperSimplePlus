@@ -14,7 +14,7 @@ namespace SuperSimplePlus.Patches
     public static class ClientOptionsPatch
     {
         private static readonly SelectionBehaviour[] AllOptions = {
-            new SelectionBehaviour("DebugModeButton", () => SSPPlugin.debugTool.Value = !SSPPlugin.debugTool.Value, SSPPlugin.debugTool.Value),
+
         };
 
         public static GameObject SSPSettingButton;
